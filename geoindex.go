@@ -235,7 +235,7 @@ func geohashEncodeMax(latitude, longitude float64) uint64 {
 // Returns: min/max latitude, min/max longitude.
 func boundingBox(latitude, longitude, boundKm float64) []float64 {
 	latDiff := boundKm / 110.574
-	longDiff := boundKm / (111.320 * math.Cos(latitude))
+	longDiff := boundKm / (111.320 * math.Cos(latitude*math.Pi/180))
 	minLatitude := latitude - latDiff
 	maxLatitude := latitude + latDiff
 	minLongitude := longitude - longDiff
